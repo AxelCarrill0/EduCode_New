@@ -1,0 +1,12 @@
+.dashboard-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+

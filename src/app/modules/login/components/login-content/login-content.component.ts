@@ -4,7 +4,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button'; // para boton de registrarse
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { PasswordModule } from 'primeng/password';// para contrasseña
 
 @Component({
@@ -27,6 +27,7 @@ export class LoginContentComponent {
   correo: string = '';
   password: string = '';
 
+  constructor(private router: Router) {}
   //metodo para registrar usuario  y verificar de que todos los campos esten llenos
   iniciarSesion(){
 
@@ -45,7 +46,7 @@ export class LoginContentComponent {
   console.log(this.password);
 
   alert('Usuario logueado correctamente');
-
+  this.router.navigate(['/platform/']);
 }
   
 

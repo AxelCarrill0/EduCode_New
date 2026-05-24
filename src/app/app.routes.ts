@@ -2,11 +2,19 @@ import { Routes } from '@angular/router';
 import { HomeContentComponent } from './modules/home/components/home-content/home-content.component';
 import { RegisterContentComponent } from './modules/register/components/register-content/register-content.component';
 import { LoginContentComponent } from './modules/login/components/login-content/login-content.component';
+import { LayoutContentComponent } from './modules/platform/layout/layout-content/layout-content.component';
+import { DashboardContentComponent } from './modules/platform/dashboard/dashboard-content/dashboard-content.component';
+
 
 export const routes: Routes = [
     { path: '', component: HomeContentComponent },
     { path: 'register', component: RegisterContentComponent },
     { path: 'login', component: LoginContentComponent },
+    { path: 'platform', component: LayoutContentComponent, 
+    children: [
+        { path: 'dashboard', component: DashboardContentComponent },
+        { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    ] },
     { path: '**', redirectTo: '' }
 
 ];
