@@ -1,4 +1,4 @@
-/* --- CONTENEDOR QUE CENTRA TODO EL CONTENIDO --- */
+//CONTENEDOR QUE CENTRA TODO EL CONTENIDO 
 .home-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -6,7 +6,7 @@
   font-family: sans-serif;
 }
 
-/* --- ESTILOS DEL ENCABEZADO --- */
+//ESTILOS DEL ENCABEZADO
 .header {
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
-/* Estilo para el texto "EduCode" */
+// Estilo para el texto "EduCode" 
 .header-logo {
   strong {
     font-size: 2.5rem;
@@ -23,7 +23,7 @@
   }
 }
 
-/* --- ESTILOS DE LOS BOTONES --- */
+//ESTILOS DE LOS BOTONES
 .header-button {
   color: #22c55e;
   font-weight: 500;
@@ -31,6 +31,7 @@
   gap: 1rem;
 }
 
+//ESTILOS DE BIENVENIDA
 .welcome {
   border: 1px solid #e2e8f0;
   padding: 4rem 2rem;
@@ -52,6 +53,7 @@
 }
 
 
+//ESTILOS DE LAS CARACTERISTICAS
 .features {
   border: 1px solid #e2e8f0;
   padding: 4rem 2rem;
@@ -78,6 +80,7 @@
   background-color: white;
 }
 
+//ESTILOS DEL PIE DE PAGINA (footer)
 .footer {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;

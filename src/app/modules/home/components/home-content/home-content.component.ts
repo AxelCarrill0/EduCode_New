@@ -14,4 +14,10 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeContentComponent {
   visible: boolean = false;
+
+  //este metodo nos ayuda a hacer scroll a la parte superior de la página
+  //cuando hacemos click en inio en el footer
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
