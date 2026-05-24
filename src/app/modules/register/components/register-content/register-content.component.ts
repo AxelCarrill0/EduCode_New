@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card'; 
-import { ButtonModule } from 'primeng/button'; // para boton de registrarse
+import { ButtonModule } from 'primeng/button'; // para el boton de registrarse
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { RouterModule } from '@angular/router';
-import { PasswordModule } from 'primeng/password';// para contrasseña
+import { RouterModule, Router } from '@angular/router';
+import { PasswordModule } from 'primeng/password';// para la contrasseña
 
 @Component({
   selector: 'app-register-content',
@@ -29,6 +29,8 @@ export class RegisterContentComponent {
   correo: string = '';
   password: string = '';
   confirmPassword: string = '';
+
+  constructor(private router: Router) {}
 
   //metodo para registrar usuario  y verificar de que todos los campos esten llenos
   registrar(){
@@ -59,6 +61,8 @@ export class RegisterContentComponent {
     console.log(this.password);
 
     alert('Usuario registrado correctamente');
+    //mandar a la ruta de login cuando se han completado los campos
+    this.router.navigate(['/login']);
 
 }
   
