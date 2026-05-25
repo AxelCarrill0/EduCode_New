@@ -1,3 +1,3 @@
 git add .   
-git commit -m "011_Correcciones"    
+git commit -m "012_Mejoras visuales en layout"    
 git push -u origin main

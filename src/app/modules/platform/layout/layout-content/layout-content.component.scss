@@ -25,6 +25,19 @@
 .sidebar a{
   color: black;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo{
+
+  color: #22c55e;
+
+  font-size: 2rem;
+
+  margin-bottom: 2rem;
+
 }
 
 .content{
@@ -49,8 +62,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
+  gap: 1rem;
 }
 
 .page-content{
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }

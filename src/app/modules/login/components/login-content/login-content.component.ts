@@ -38,7 +38,6 @@ export class LoginContentComponent {
 
     alert('Todos los campos son obligatorios');
     return;
-
   }
 
   // mostrar datos
