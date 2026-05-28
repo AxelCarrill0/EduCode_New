@@ -1,42 +1,36 @@
 <div class="register-container">
 
-  <p-card header="Crear Cuenta" styleClass="register-card">
+  <p-card styleClass="register-card">
+    <div class="register-header">
+      <i class="pi pi-user-plus"></i>
+      <h2>Crear Cuenta</h2>
+      <p>Únete a EduCode</p>
+    </div>
 
     <div class="register-field">
-
       <label>Nombre</label>
-
       <input type="text" pInputText class="w-full" [(ngModel)]="nombre">
-
     </div>
-    <div class="register-field">
 
+    <div class="register-field">
       <label>Correo</label>
-
-      <input type="email" pInputText class="w-full" [(ngModel)]="correo">
-
+      <input type="email" pInputText class="w-full" placeholder="ejemplo@correo.com" [(ngModel)]="correo">
     </div>
 
     <div class="register-field">
-
       <label>Contraseña</label>
-
-      <p-password [feedback]="false" styleClass="w-full" [(ngModel)]="password"></p-password>
-
+      <p-password [feedback]="false" [toggleMask]="true" styleClass="w-full" [(ngModel)]="password"></p-password>
     </div>
 
     <div class="register-field">
-
       <label>Confirmar Contraseña</label>
-
-      <p-password [feedback]="false" styleClass="w-full" [(ngModel)]="confirmPassword"></p-password>
-
+      <p-password [feedback]="false" [toggleMask]="true" styleClass="w-full" [(ngModel)]="confirmPassword"></p-password>
     </div>
 
-     <div class="register-button">
-        <p-button label="Regresar" routerLink="/" severity="success"></p-button>
-        <p-button label="Registrarse" severity="success" (click)="registrar()"></p-button>
-     </div>
+    <div class="register-button">
+      <p-button label="Regresar" routerLink="/" severity="success" [outlined]="true"></p-button>
+      <p-button label="Registrarse" severity="success" (click)="registrar()"></p-button>
+    </div>
 
   </p-card>
 

@@ -1,4 +1,4 @@
-//CONTENEDOR QUE CENTRA TODO EL CONTENIDO 
+//contenedor principal
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -6,7 +6,6 @@
   font-family: sans-serif;
 }
 
-//ESTILOS DEL ENCABEZADO
 .header {
   display: flex;
   justify-content: space-between;
@@ -15,7 +14,6 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
-// Estilo para el texto "EduCode" 
 .header-logo {
   strong {
     font-size: 2.5rem;
@@ -23,7 +21,6 @@
   }
 }
 
-//ESTILOS DE LOS BOTONES
 .header-button {
   color: #22c55e;
   font-weight: 500;
@@ -31,29 +28,28 @@
   gap: 1rem;
 }
 
-//ESTILOS DE BIENVENIDA
-.welcome {
-  border: 1px solid #e2e8f0;
-  padding: 4rem 2rem;
-  border-radius: 8px;
-  background-color: white;
-  margin-top: 2rem;
-}
 
-.welcome-title {
-  display: flex;
-  flex-direction: column;
+//bienvenida
+.welcome{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
 }
 
-.welcome-img {
-  width: 50%;
-  height: 50%;
-  border-radius: 8px;
+.welcome-info{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcome-image{
+  display: flex;
+  justify-content: center;
 }
 
 
-//ESTILOS DE LAS CARACTERISTICAS
+//caracteristicas
 .features {
   border: 1px solid #e2e8f0;
   padding: 4rem 2rem;
@@ -64,6 +60,7 @@
 .features-title {
   text-align: center;
   margin-bottom: 1rem;
+  color: #1e293b;
 
 }
 
@@ -80,7 +77,16 @@
   background-color: white;
 }
 
-//ESTILOS DEL PIE DE PAGINA (footer)
+.feature-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  color: #22c55e;
+}
+
+
+//pie de página
 .footer {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -101,7 +107,25 @@
   color: #1e293b;
 }
 
-.footer-section a {
-  color: #475569;
-  text-decoration: none;
+.footer-section li {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  list-style: none;
 }
+
+.footer-section a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+

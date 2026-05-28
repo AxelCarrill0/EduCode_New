@@ -3,11 +3,14 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
+import { TagModule } from 'primeng/tag';
+import { DividerModule } from 'primeng/divider';
+
 
 @Component({
   selector: 'app-home-content',
   standalone: true,
-  imports: [ButtonModule, InputTextModule, CardModule, RouterModule],
+  imports: [ButtonModule, InputTextModule, CardModule, RouterModule, TagModule, DividerModule],
   templateUrl: './home-content.component.html',
   styleUrl: './home-content.component.scss',
 

@@ -1,73 +1,84 @@
 <div class="home-container">
-
   <header class="header">
-
-    <div class="header-logo">
-      <strong>EduCode</strong>
-    </div>
+    <div class="header-logo"><strong>EduCode</strong></div>
 
     <div class="header-button">
       <p-button label="Iniciar Sesión" routerLink="/login" severity="success" [outlined]="true"></p-button>
-      <p-button label="Registrarse" routerLink="/register" severity="success"></p-button> <!--botones de primeng ya traen sus estilos de colores
-      y de texto -->
+      <p-button label="Registrarse" routerLink="/register" severity="success"></p-button>
     </div>
-
   </header>
 
   <main class="main-content">
+    <p-card>
+      <section class="welcome">
+        <div class="welcome-info">
+          <p-tag value="Plataforma Educativa" severity="success"></p-tag>
+          <h1>Aprende programación de forma práctica</h1>
+          <p>
+            EduCode te permite aprender mediante ejercicios interactivos, rutas
+            guiadas y laboratorios prácticos.
+          </p>
+          <p-button label="Comenzar" severity="success" routerLink="/login"></p-button>
+        </div>
 
-    <section class="welcome">
-      <div class="welcome-title">
-        <h1>EduCode - Plataforma de aprendizaje de programación</h1>
-        <p>En EduCode, aprender a programar es fácil y divertido</p>
-      </div>
-      <div class="welcome-img">
-        <p>[ IMAGEN DEL editor de Código Principal ]</p>
-      </div>
-    </section>
+        <div class="welcome-image">[IMAGEN DE EDUCODE]</div>
+      </section>
+    </p-card>
 
-    <section class="features">
-      <div class="features-title">
-        <h2>¿Por qué aprender con EduCode?</h2>
-        <p>[Texto]</p>
-      </div>
-      <div class="features-content">
-        <p-card> <!-- esto hace como un contenedor visualmente mejor que el div y se tiene que hacer en scss-->
-          <div class="feature-content-image">[ IMAGEN ]</div>
-          <h3>Caracteristica 1</h3>
-          <p>[Texto]</p>
-        </p-card>
-        <div class="feature-item">
-          <div class="feature-content-image">[ IMAGEN]</div>
-          <h3>Caracteristica 2</h3>
+    <p-divider></p-divider>
+
+    <p-card>
+      <section class="features">
+        <div class="features-title">
+          <h2>¿Por qué aprender con EduCode?</h2>
           <p>[Texto]</p>
         </div>
-        <div class="feature-item">
-          <div class="feature-content-image">[ IMAGEN]</div>
-          <h3>Caracteristica 3</h3>
-          <p>[Texto]</p>
-        </div>
-      </div>
-    </section>
 
+        <div class="features-content">
+          <p-card>
+            <div class="feature-icon"><i class="pi pi-code"></i></div>
+            <h3>Consola Interactiva</h3>
+            <p>
+              Ejecuta código en tiempo real directamente desde la plataforma.
+            </p>
+          </p-card>
+          <p-card>
+            <div class="feature-icon"><i class="pi pi-check-circle"></i></div>
+            <h3>Validación Automática</h3>
+            <p>
+              Obtén feedback instantáneo y corrige errores al momento de
+              escribir.
+            </p>
+          </p-card>
+          <p-card>
+            <div class="feature-icon"><i class="pi pi-sitemap"></i></div>
+            <h3>Rutas Guiadas</h3>
+            <p>Aprende paso a paso desde nivel básico hasta avanzado.</p>
+          </p-card>
+        </div>
+      </section>
+    </p-card>
   </main>
+
+  <p-divider></p-divider>
 
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
         <h3>EduCode</h3>
         <p>Aprende a programar de forma fácil y divertida.</p>
-        <li><a routerLink="/" (click)="scrollToTop()">Inicio</a></li>
+        <li>
+          <a routerLink="/" (click)="scrollToTop()"><i class="pi pi-home"></i>Inicio</a>
+        </li>
       </div>
       <div class="footer-section">
-        <h3>Síguenos</h3>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Twitter</a></li>
-        </ul>
+        <h3>Redes Sociales</h3>
+        <div class="social-icons">
+          <i class="pi pi-facebook"></i>
+          <i class="pi pi-instagram"></i>
+          <i class="pi pi-twitter"></i>
+        </div>
       </div>
     </div>
   </footer>
-
 </div>
