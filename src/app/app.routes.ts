@@ -1,27 +1,62 @@
 import { Routes } from '@angular/router';
-import { HomeContentComponent } from './modules/home/components/home-content/home-content.component';
-import { RegisterContentComponent } from './modules/register/components/register-content/register-content.component';
-import { LoginContentComponent } from './modules/login/components/login-content/login-content.component';
-import { LayoutContentComponent } from './modules/platform/layout/layout-content/layout-content.component';
-import { DashboardContentComponent } from './modules/platform/dashboard/dashboard-content/dashboard-content.component';
-import { ModulesContentComponent } from './modules/platform/modules/modules-content/modules-content.component';
-import { LaboratoryContentComponent } from './modules/platform/laboratory/laboratory-content/laboratory-content.component';
-import { ProgressContentComponent } from './modules/platform/progress/progress-content/progress-content.component';
-import { SettingsContentComponent } from './modules/platform/settings/settings-content/settings-content.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeContentComponent },
-    { path: 'register', component: RegisterContentComponent },
-    { path: 'login', component: LoginContentComponent },
-    { path: 'platform', component: LayoutContentComponent, 
+  {
+    path: '',
+    loadComponent: () =>
+      import('./modules/home/components/home-content/home-content.component')
+        .then(m => m.HomeContentComponent)
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./modules/register/components/register-content/register-content.component')
+        .then(m => m.RegisterContentComponent)
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./modules/login/components/login-content/login-content.component')
+        .then(m => m.LoginContentComponent)
+  },
+  {
+    path: 'platform',
+    loadComponent: () =>
+      import('./modules/platform/layout/layout-content/layout-content.component')
+        .then(m => m.LayoutContentComponent),
     children: [
-        { path: 'dashboard', component: DashboardContentComponent },
-        { path: 'modules', component: ModulesContentComponent },
-        { path: 'laboratory', component: LaboratoryContentComponent },
-        { path: 'progress', component: ProgressContentComponent },
-        { path: 'settings', component: SettingsContentComponent },
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
-    ] },
-    { path: '**', redirectTo: '' }
-
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./modules/platform/dashboard/dashboard-content/dashboard-content.component')
+            .then(m => m.DashboardContentComponent)
+      },
+      {
+        path: 'modules',
+        loadComponent: () =>
+          import('./modules/platform/modules/modules-content/modules-content.component')
+            .then(m => m.ModulesContentComponent)
+      },
+      {
+        path: 'laboratory',
+        loadComponent: () =>
+          import('./modules/platform/laboratory/laboratory-content/laboratory-content.component')
+            .then(m => m.LaboratoryContentComponent)
+      },
+      {
+        path: 'progress',
+        loadComponent: () =>
+          import('./modules/platform/progress/progress-content/progress-content.component')
+            .then(m => m.ProgressContentComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./modules/platform/settings/settings-content/settings-content.component')
+            .then(m => m.SettingsContentComponent)
+      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    ]
+  },
+  { path: '**', redirectTo: '' }
 ];
