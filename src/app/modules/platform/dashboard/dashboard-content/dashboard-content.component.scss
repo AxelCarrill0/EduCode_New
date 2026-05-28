@@ -4,9 +4,37 @@
   gap: 2rem;
 }
 
-.dashboard-cards{
+.dashboard-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1{
+  margin: 0;
+  color: #1e293b;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
+.card-content{
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-button{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}

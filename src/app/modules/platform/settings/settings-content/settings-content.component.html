@@ -1,28 +1,56 @@
 <div class="settings-container">
 
   <div class="settings-header">
-    <h1>Configuración</h1>
-    <p>Administra tu cuenta y sesión.</p>
+    <div>
+      <h1>Configuración</h1>
+      <p>Administra tu cuenta y sesión.</p>
+    </div>
   </div>
 
-  <div class="settings-card">
+  <div class="content">
 
     <p-card>
-    <h3>Información Personal</h3>
-
-    <div class="info-item">
-      <p>Nombre:</p>
-      <p>[NAME_USER]</p>
-    </div>
-
-    <div class="info-item">
-      <p>Correo:</p>
-      <p>[EMAIL_ADDRESS]</p>
-    </div>
+      <div class="card-content">
+        <div>
+          <h2>Idioma</h2>
+          <p>Cambia el idioma de la interfaz.</p>
+        </div>
+        <select class="idioma-select">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
     </p-card>
-    
+
     <p-card>
-      <p-button label="Cerrar Sesión" routerLink="" class="logout-button" />
+      <div class="card-content">
+        <div>
+          <h2>Información Personal</h2>
+          <p>Datos básicos de la cuenta.</p>
+        </div>
+        <p-avatar label="A" shape="circle" size="large"></p-avatar>
+      </div>
+
+      <div class="info-item">
+        <span>Nombre</span>
+        <strong>Usuario</strong>
+      </div>
+
+      <div class="info-item">
+        <span>Correo</span>
+        <strong>usuario&#64;gmail.com</strong>
+      </div>
+    </p-card>
+
+    <p-card>
+      <div class="card-content">
+        <div>
+          <h2>Sesión</h2>
+          <p>Cierra tu sesión actual de la plataforma.</p>
+        </div>
+        <p-button label="Cerrar Sesión" icon="pi pi-sign-out" severity="danger" [outlined]="true" routerLink="/">
+        </p-button>
+      </div>
     </p-card>
 
   </div>

@@ -3,11 +3,16 @@
   <div class="sidebar">
     <h2>EduCode</h2>
     <ul>
-      <li><a routerLink="/platform/dashboard"><i class="pi pi-home"></i>Dashboard</a></li>
-      <li><a routerLink="/platform/modules"><i class="pi pi-book"></i>Módulos</a></li>
-      <li><a routerLink="/platform/laboratory"><i class="pi pi-file"></i>Laboratorio</a></li>
-      <li><a routerLink="/platform/progress"><i class="pi pi-chart-bar"></i>Progreso</a></li>
-      <li><a routerLink="/platform/settings"><i class="pi pi-cog"></i>Ajustes</a></li>
+      <li><a routerLink="/platform/dashboard" routerLinkActive="active-link"><i class="pi pi-home"></i>
+          Dashboard</a></li>
+      <li><a routerLink="/platform/modules" routerLinkActive="active-link"><i class="pi pi-book"></i>
+          Módulos</a></li>
+      <li><a routerLink="/platform/laboratory" routerLinkActive="active-link"><i class="pi pi-file"></i>
+          Laboratorio</a></li>
+      <li><a routerLink="/platform/progress" routerLinkActive="active-link"><i class="pi pi-chart-bar"></i>
+          Progreso</a></li>
+      <li><a routerLink="/platform/settings" routerLinkActive="active-link"><i class="pi pi-cog"></i>
+          Ajustes</a></li>
 
     </ul>
 
@@ -15,11 +20,12 @@
 
   <div class="content">
 
-    <div class="topbar">
-      <h3>Plataforma de Aprendizaje</h3>
+    <div class="topbar-content">
+      <p-tag value="Plataforma Educativa" severity="success"></p-tag>
       <div class="topbar-button">
         <p-avatar label="A" shape="circle" size="large"></p-avatar>
-        <p-button label="Cerrar Sesión" routerLink="/" severity="success" [outlined]="true"></p-button>
+        <p-button label="Cerrar Sesión" routerLink="/" icon="pi pi-sign-out" severity="success"
+          [outlined]="true"></p-button>
       </div>
     </div>
 

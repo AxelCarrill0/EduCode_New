@@ -1,37 +1,51 @@
 <div class="dashboard-container">
 
-  <h1>Bienvenido a EduCode</h1>
+  <div class="dashboard-header">
+    <div>
+      <h1>Bienvenido, Usuario</h1>
+      <p>Observa tus estadisticas y progreso.</p>
+    </div>
+    <p-tag value="Nivel Básico" severity="success"></p-tag>
+  </div>
 
-  <p>
-    Continúa aprendiendo programación.
-  </p>
+  <div class="content">
 
-  <div class="dashboard-cards">
+    <section class="dashboard-content">
+      <p-card>
+        <div class="card-content">
+          <i class="pi pi-book"></i>
+          <h1>7</h1>
+          <p>Módulos disponibles</p>
+
+        </div>
+      </p-card>
+
+      <p-card>
+        <div class="card-content">
+          <i class="pi pi-check-circle"></i>
+          <h1>6/17</h1>
+          <p>Lecciones completadas</p>
+        </div>
+      </p-card>
+
+      <p-card>
+        <div class="card-content">
+          <i class="pi pi-bolt"></i>
+          <h1>5 días</h1>
+          <p>Racha actual</p>
+        </div>
+      </p-card>
+    </section>
 
     <p-card>
-
-      <h3>Módulos</h3>
-
-      <p>12 disponibles</p>
-
-    </p-card>
-
-    <p-card>
-
-      <h3>Progreso</h3>
-
-      <p>35%</p>
-
-    </p-card>
-
-    <p-card>
-
-      <h3>Laboratorio</h3>
-
-      <p>Editor interactivo</p>
-
+      <h2>Tu progreso general</h2>
+      <p-progressBar [value]="35"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
+      </div>
     </p-card>
 
   </div>
+
 
 </div>

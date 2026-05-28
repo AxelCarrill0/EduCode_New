@@ -1,39 +1,88 @@
 <div class="progress-container">
 
   <div class="progress-header">
-    <h1>Mi Progreso</h1>
-    <p>
-      Visualiza tu avance en la plataforma.
-    </p>
+    <div>
+      <h1>Mi Progreso</h1>
+      <p>Visualiza el avance que has tenido en cada módulo.</p>
+    </div>
   </div>
 
-  <div class="progress-cards">
+  <div class="content">
+
     <p-card>
-      <h3>Python</h3>
-      <p>80% completado</p>
-      <div class="progress-bar">
-        <div class="progress-fill python">
-        </div>
+      <h2>Introduccion a Python</h2>
+      <p-progressBar [value]="80"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
       </div>
     </p-card>
 
     <p-card>
-      <h3>Variables</h3>
-      <p>50% completado</p>
-      <div class="progress-bar">
-        <div class="progress-fill var"></div>
+      <h2>Variables</h2>
+      <p-progressBar [value]="50"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
       </div>
     </p-card>
-      
+
     <p-card>
-      <h3>Tipos de datos</h3>
-      <p>20% completado</p>
-      <div class="progress-bar">
-        <div class="progress-fill types">
-        </div>
+      <h2>Tipos de datos</h2>
+      <p-progressBar [value]="20"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
+      </div>
+    </p-card>
+
+    <p-card>
+      <h2>Operadores</h2>
+      <p-progressBar [value]="10"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
+      </div>
+    </p-card>
+
+    <p-card>
+      <h2>Condicionales</h2>
+      <p-progressBar [value]="0"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
+      </div>
+    </p-card>
+
+    <p-card>
+      <h2>Bucles</h2>
+      <p-progressBar [value]="0"></p-progressBar>
+      <div class="progress-button">
+        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
+      </div>
+    </p-card>
+
+    <p-card>
+      <div>
+        <h1>Logros</h1>
+        <p>Descubre los logros que has obtenido en tu camino de aprendizaje.</p>
+      </div>
+      <div class="achievements-content">
+        <p-card class="achievements-content">
+          <p-tag value="Primera leccion" severity="warning"></p-tag>
+          <p>Has completado tu primera leccion. ¡Felicidades!</p>
+        </p-card>
+        <p-card class="achievements-content">
+          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
+          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
+        </p-card>
+        <p-card class="achievements-content">
+          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
+          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
+        </p-card>
+        <p-card class="achievements-content">
+          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
+          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
+        </p-card>
       </div>
     </p-card>
 
   </div>
 
-</div>      
+
+</div>

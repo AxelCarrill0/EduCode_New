@@ -19,7 +19,6 @@
     border-right: none;
     border-top: 1px solid #e2e8f0;
     padding: 0.5rem 1rem;
-    // Barra inferior fija
     position: fixed;
     bottom: 0;
     left: 0;
@@ -60,7 +59,11 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  text-decoration: none;
+  gap: .8rem;
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  transition: .2s;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -70,6 +73,10 @@
 
     i { font-size: 1.1rem; }
   }
+}
+.active-link{
+  background-color: #22c55e;
+  color: white !important;
 }
 
 .logo {
@@ -83,12 +90,11 @@
   background-color: #f8fafc;
 
   @media (max-width: 768px) {
-    // Deja espacio para la barra inferior fija
     padding-bottom: 70px;
   }
 }
 
-.topbar {
+.topbar-content {
   height: 70px;
   background-color: white;
   border-bottom: 1px solid #e2e8f0;

@@ -1,6 +1,11 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  //la importacion se realizo de esta manera ya que con esto se optimiza 
+  // el rendimiento de la aplicacion lo que significa que los componentes 
+  // solo se cargaran cuando sea necesario, es decir, cuando el usuario acceda 
+  //a la ruta correspondiente
+  
   {
     path: '',
     loadComponent: () =>
