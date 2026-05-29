@@ -2,39 +2,74 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 }
 
 .dashboard-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+  }
 }
 
 .dashboard-header h1{
   margin: 0;
   color: #1e293b;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 }
 
 .content{
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 }
 
 .dashboard-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .card-content{
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
 }
 
 .progress-button{
   margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    margin-top: .75rem;
+    justify-content: flex-start;
+  }
 }
