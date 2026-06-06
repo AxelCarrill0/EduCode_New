@@ -40,3 +40,11 @@
     flex-direction: column;
   }
 }
+
+.content p-card{
+  transition:.3s;
+}
+
+.content p-card:hover{
+  transform:translateY(-5px);
+}

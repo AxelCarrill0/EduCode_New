@@ -9,7 +9,18 @@
 
     <div class="login-field">
       <label>Correo</label>
-      <input type="email" pInputText class="w-full" placeholder="ejemplo@correo.com" [(ngModel)]="correo">
+
+      <span class="p-input-icon-left w-full">
+      <i class="pi pi-envelope"></i>
+
+      <input
+      type="email"
+      pInputText
+      class="w-full"
+      placeholder="ejemplo@correo.com"
+      [(ngModel)]="correo">
+      </span>
+
     </div>
 
     <div class="login-field">
@@ -18,11 +29,20 @@
 
     </div>
 
+    <div class="remember-me">
+      <input type="checkbox">
+      <label>Recordarme</label>
+    </div>
+
     <div class="login-button">
       <p-button label="Regresar" routerLink="/" severity="success" [outlined]="true"></p-button>
       <p-button label="Iniciar Sesión" styleClass="w-full" severity="success" (click)="iniciarSesion()"></p-button>
     </div>
     <a class="forgot-password">¿Olvidaste tu contraseña?</a>
+    <p class="register-link">
+      ¿No tienes cuenta?
+    <a routerLink="/register">Regístrate</a>
+    </p>
   </p-card>
 
 </div>

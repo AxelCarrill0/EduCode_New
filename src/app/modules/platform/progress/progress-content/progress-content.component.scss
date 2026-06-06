@@ -49,3 +49,15 @@
     gap: .75rem;
   }
 }
+
+.progress-card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:1rem;
+}
+
+.progress-card-header span{
+  font-weight:bold;
+  color:#22c55e;
+}

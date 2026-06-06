@@ -12,17 +12,46 @@
 
     <div class="editor-section">
       <h3>Editor de Código</h3>
-      <textarea>
-        print("Hola Mundo")
+      <div class="language-selector">
+
+    <label>Lenguaje</label>
+
+    <select>
+      <option>Python</option>
+      <option>Java</option>
+      <option>JavaScript</option>
+      <option>C++</option>
+    </select>
+
+      </div>
+      <textarea spellcheck="false">
+      # Escribe tu código aquí
+      
+      print("Hola Mundo")
       </textarea>
     </div>
 
     <div class="console-section">
-      <h3>Consola</h3>
-      <div class="console-output">
-        Resultado del código...
-      </div>
+
+  <div class="console-header">
+    <h3>Consola</h3>
+    <span class="status">
+      ● Listo
+    </span>
+  </div>
+  <div class="console-output">
+    <div class="console-line">
+      >>> Ejecutando programa...
     </div>
+    <div class="console-line success">
+      Hola Mundo
+    </div>
+    <div class="console-line info">
+      Proceso finalizado correctamente.
+    </div>
+  </div>
+
+</div>
 
   </div>
 

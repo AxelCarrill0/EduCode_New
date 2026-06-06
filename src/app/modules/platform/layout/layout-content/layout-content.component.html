@@ -7,7 +7,7 @@
           Dashboard</a></li>
       <li><a routerLink="/platform/modules" routerLinkActive="active-link"><i class="pi pi-book"></i>
           Módulos</a></li>
-      <li><a routerLink="/platform/laboratory" routerLinkActive="active-link"><i class="pi pi-file"></i>
+      <li><a routerLink="/platform/laboratory" routerLinkActive="active-link"><i class="pi pi-code"></i>
           Laboratorio</a></li>
       <li><a routerLink="/platform/progress" routerLinkActive="active-link"><i class="pi pi-chart-bar"></i>
           Progreso</a></li>
@@ -22,11 +22,26 @@
 
     <div class="topbar-content">
       <p-tag value="Plataforma Educativa" severity="success"></p-tag>
-      <div class="topbar-button">
-        <p-avatar label="A" shape="circle" size="large"></p-avatar>
-        <p-button label="Cerrar Sesión" routerLink="/" icon="pi pi-sign-out" severity="success"
-          [outlined]="true"></p-button>
-      </div>
+      <div class="topbar-content">
+        <div>
+          <h3>Hola, Usuario 👋</h3>
+        </div>
+        <div class="topbar-button">
+          <p-avatar
+            label="A"
+            shape="circle"
+            size="large">
+          </p-avatar>
+
+        <p-button
+          label="Cerrar Sesión"
+          routerLink="/"
+          icon="pi pi-sign-out"
+          severity="success"
+          [outlined]="true">
+        </p-button>
+        </div>
+    </div>
     </div>
 
     <div class="page-content">
