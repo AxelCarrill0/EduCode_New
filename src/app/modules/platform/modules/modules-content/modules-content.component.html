@@ -2,65 +2,47 @@
 
   <div class="modules-header">
     <div>
-      <h1>Módulos</h1>
-      <p>Selecciona un módulo y comienza tu aprendizaje.</p>
+      <h1>Módulos de aprendizaje</h1>
+      <p>Explora los módulos disponibles y sigue tu progreso.</p>
+    </div>
+    <div class="header-chips">
+      <p-tag *ngFor="let chip of filterChips" [value]="chip.label" [severity]="chip.active ? 'success' : 'info'" [styleClass]="'filter-chip' + (chip.active ? ' chip-active' : '')" (click)="setFilter(chip.key)"></p-tag>
     </div>
   </div>
 
-  <div class="content">
-
-    <p-card>
-      <h3>Introduccion a Python</h3>
-      <p>
-        Conoce los fundamentos de la programación con Python.
-      </p>
-      <div class="card-buttons">
-        <p-button label="Entrar"></p-button>
-        <p-tag value="En progreso" severity="warning"></p-tag>
+  <div class="modules-grid">
+    <div class="module-card" *ngFor="let mod of filteredModules; let i = index" [style.--card-delay]="i * 0.06 + 's'" [style.--card-accent]="mod.accent">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon" [style.background]="mod.iconBg" [style.color]="mod.accent">
+            <i [class]="mod.icon"></i>
+          </div>
+          <div class="card-info">
+            <h3>{{ mod.name }}</h3>
+            <p>{{ mod.description }}</p>
+          </div>
+        </div>
+        <div class="card-progress" *ngIf="mod.status !== 'not-started'">
+          <div class="progress-row">
+            <span class="progress-label">{{ mod.completed }}/{{ mod.lessons }} lecciones</span>
+            <span class="progress-pct">{{ mod.progress }}%</span>
+          </div>
+          <p-progressBar [value]="mod.progress" styleClass="module-progress-bar"></p-progressBar>
+        </div>
+        <div class="card-footer">
+          <div class="card-meta">
+            <p-tag [value]="mod.difficulty" [severity]="mod.difficulty === 'Principiante' ? 'success' : mod.difficulty === 'Intermedio' ? 'warning' : 'danger'" styleClass="diff-tag"></p-tag>
+            <span class="lesson-count">{{ mod.lessons }} lecciones</span>
+          </div>
+          <div class="card-actions">
+            <p-tag *ngIf="mod.status === 'in-progress'" value="En progreso" severity="warning" styleClass="status-tag"></p-tag>
+            <p-tag *ngIf="mod.status === 'completed'" value="Completado" severity="success" styleClass="status-tag"></p-tag>
+            <p-button [label]="mod.status === 'completed' ? 'Repasar' : 'Entrar'" icon="pi pi-arrow-right" iconPos="right" severity="success" styleClass="enter-btn"></p-button>
+          </div>
+        </div>
       </div>
-    </p-card>
-
-    <p-card>
-      <h3>Variables</h3>
-      <p>
-        Aprende a almacenar y manipular informacion.
-        Los bloques de construccion de la programacion.
-      </p>
-      <p-button label="Entrar"></p-button>
-    </p-card>
-
-    <p-card>
-      <h3>Tipos de datos</h3>
-      <p>
-        Descubre como Python maneja textos, numeros y booleanos.
-      </p>
-      <p-button label="Entrar"></p-button>
-    </p-card>
-
-    <p-card>
-      <h3>Operadores</h3>
-      <p>
-        Descubre como Python maneja textos, numeros y booleanos.
-      </p>
-      <p-button label="Entrar"></p-button>
-    </p-card>
-
-    <p-card>
-      <h3>Condicionales</h3>
-      <p>
-        Descubre como Python maneja textos, numeros y booleanos.
-      </p>
-      <p-button label="Entrar"></p-button>
-    </p-card>
-
-    <p-card>
-      <h3>Bucles</h3>
-      <p>
-        Descubre como Python maneja textos, numeros y booleanos.
-      </p>
-      <p-button label="Entrar"></p-button>
-    </p-card>
-
+    </div>
   </div>
 
 </div>

@@ -7,82 +7,58 @@
     </div>
   </div>
 
-  <div class="content">
-
-    <p-card>
-      <h2>Introduccion a Python</h2>
-      <p-progressBar [value]="80"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <h2>Variables</h2>
-      <p-progressBar [value]="50"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <h2>Tipos de datos</h2>
-      <p-progressBar [value]="20"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <h2>Operadores</h2>
-      <p-progressBar [value]="10"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <h2>Condicionales</h2>
-      <p-progressBar [value]="0"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <h2>Bucles</h2>
-      <p-progressBar [value]="0"></p-progressBar>
-      <div class="progress-button">
-        <p-button label="Continúa tu aprendizaje" routerLink="/platform/modules" severity="success"></p-button>
-      </div>
-    </p-card>
-
-    <p-card>
-      <div>
-        <h1>Logros</h1>
-        <p>Descubre los logros que has obtenido en tu camino de aprendizaje.</p>
-      </div>
-      <div class="achievements-content">
-        <p-card class="achievements-content">
-          <p-tag value="Primera leccion" severity="warning"></p-tag>
-          <p>Has completado tu primera leccion. ¡Felicidades!</p>
-        </p-card>
-        <p-card class="achievements-content">
-          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
-          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
-        </p-card>
-        <p-card class="achievements-content">
-          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
-          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
-        </p-card>
-        <p-card class="achievements-content">
-          <p-tag value="Aprendiz dedicado" severity="success"></p-tag>
-          <p>Has dedicado 5 horas al aprendizaje. ¡Sigue asi!</p>
-        </p-card>
-      </div>
-    </p-card>
-
+  <div class="section-header">
+    <h2>Progreso por módulo</h2>
+    <p>Revisa tu avance en cada módulo de aprendizaje.</p>
   </div>
 
+  <div class="modules-list">
+    <div class="module-row" *ngFor="let mod of moduleProgress; let i = index" [style.--accent]="mod.accent" [style.--delay]="i * 0.08 + 's'">
+      <div class="row-accent"></div>
+      <div class="row-icon" [style.background]="mod.iconBg" [style.color]="mod.accent">
+        <i [class]="mod.icon"></i>
+      </div>
+      <div class="row-content">
+        <div class="row-top">
+          <div class="row-title-group">
+            <span class="row-name">{{ mod.name }}</span>
+            <span class="row-status" [class.completed]="mod.status === 100" [class.in-progress]="mod.status > 0 && mod.status < 100" [class.pending]="mod.status === 0">{{ mod.status === 100 ? 'Completado' : mod.status > 0 ? 'En progreso' : 'Pendiente' }}</span>
+          </div>
+          <span class="row-pct">{{ mod.status }}%</span>
+        </div>
+        <div class="row-bar-track">
+          <div class="row-bar-fill" [style.width.%]="mod.status"></div>
+        </div>
+        <div class="row-bottom">
+          <span class="row-meta">{{ mod.lessonsCompletadas }}/{{ mod.lessons }} lecciones</span>
+          <button class="row-btn">
+            Continuar
+            <i class="pi pi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>Logros</h2>
+    <p>Descubre los logros que has obtenido en tu camino de aprendizaje.</p>
+  </div>
+
+  <div class="achievements-section">
+    <div class="achievement-card" *ngFor="let ach of achievements; let i = index" [style.--card-delay]="i * 0.08 + 's'" [class.locked]="!ach.earned">
+      <div class="ach-icon" [class.earned]="ach.earned" [class.locked]="!ach.earned">
+        <i [class]="ach.icon"></i>
+      </div>
+      <div class="ach-info">
+        <span class="ach-name">{{ ach.name }}</span>
+        <span class="ach-desc">{{ ach.description }}</span>
+      </div>
+      <div class="ach-badge">
+        <i *ngIf="ach.earned" class="pi pi-check-circle earned-check"></i>
+        <i *ngIf="!ach.earned" class="pi pi-lock locked-icon"></i>
+      </div>
+    </div>
+  </div>
 
 </div>

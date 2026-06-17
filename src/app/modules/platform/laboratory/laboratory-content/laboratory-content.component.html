@@ -1,57 +1,89 @@
-<div class="laboratory-container">
+<div class="lab-container">
 
-  <div class="laboratory-header">
-    <div class="laboratory-header-text">
-      <h1>Laboratorio</h1>
-      <p>Practica tus habilidades de programación.</p>
+  <div class="lab-header">
+    <div>
+      <h1>Laboratorio de código</h1>
+      <p>Escribe, ejecuta y prueba tu código en tiempo real.</p>
     </div>
-    <p-button class="execute-button" icon="pi pi-play" label="Ejecutar"></p-button>
+    <div class="header-actions">
+      <p-button label="Limpiar" icon="pi pi-trash" severity="secondary" [text]="true" (onClick)="clearConsole()" styleClass="clear-btn"></p-button>
+      <p-button [label]="isRunning ? 'Ejecutando...' : 'Ejecutar'" icon="pi pi-play" severity="success" (onClick)="execute()" [disabled]="isRunning" styleClass="run-btn"></p-button>
+    </div>
   </div>
 
-  <div class="laboratory-content">
+  <div class="lab-decor">
+    <span class="decor-symbol" *ngFor="let sym of decorSymbols" [style.--dx]="sym.x" [style.--dy]="sym.y" [style.--ds]="sym.size" [style.--dd]="sym.delay" [style.--dr]="sym.rotation">{{ sym.char }}</span>
+  </div>
 
-    <div class="editor-section">
-      <h3>Editor de Código</h3>
-      <div class="language-selector">
+  <div class="lab-content">
 
-    <label>Lenguaje</label>
-
-    <select>
-      <option>Python</option>
-      <option>Java</option>
-      <option>JavaScript</option>
-      <option>C++</option>
-    </select>
-
+    <div class="editor-panel">
+      <div class="panel-tabs">
+        <div class="tab active">
+          <i [class]="getCurrentLang().icon"></i>
+          <span>{{ getCurrentLang().label === 'Python' ? 'main.py' : getCurrentLang().label === 'JavaScript' ? 'script.js' : getCurrentLang().label === 'Java' ? 'Main.java' : 'main.cpp' }}</span>
+        </div>
       </div>
-      <textarea spellcheck="false">
-      # Escribe tu código aquí
-      
-      print("Hola Mundo")
-      </textarea>
+      <div class="editor-body">
+        <div class="editor-gutter">
+          <span class="gutter-line" *ngFor="let num of codeLines">{{ num }}</span>
+        </div>
+        <textarea
+          class="editor-textarea"
+          spellcheck="false"
+          [(ngModel)]="code"
+          (input)="updateCodeLines()"
+        ></textarea>
+      </div>
+      <div class="editor-statusbar">
+        <span class="status-item">{{ getCurrentLang().label }}</span>
+        <span class="status-item">{{ codeLines.length }} líneas</span>
+        <span class="status-item">Ln {{ codeLines.length }}, Col 1</span>
+        <span class="status-item">UTF-8</span>
+      </div>
     </div>
 
-    <div class="console-section">
-
-  <div class="console-header">
-    <h3>Consola</h3>
-    <span class="status">
-      ● Listo
-    </span>
-  </div>
-  <div class="console-output">
-    <div class="console-line">
-      >>> Ejecutando programa...
+    <div class="console-panel">
+      <div class="console-tabs">
+        <div class="ctab active">
+          <i class="pi pi-terminal"></i>
+          <span>TERMINAL</span>
+        </div>
+        <div class="ctab" [class.has-output]="consoleLines.length > 1">
+          <i class="pi pi-chart-bar"></i>
+          <span>OUTPUT</span>
+        </div>
+        <div class="ctab" *ngIf="hasErrors">
+          <i class="pi pi-exclamation-circle"></i>
+          <span>PROBLEMAS</span>
+          <span class="tab-badge">1</span>
+        </div>
+      </div>
+      <div class="console-output">
+        <div class="console-topbar">
+          <span class="console-path">{{ getCurrentLang().label === 'Python' ? '~/workspace' : '~/workspace' }} <span class="path-sep">&gt;</span> main</span>
+          <span class="console-status" [class.running]="isRunning">
+            <span class="status-dot"></span>
+            {{ isRunning ? 'Ejecutando...' : 'Listo' }}
+          </span>
+        </div>
+        <div class="console-scroll">
+          <div class="console-line" *ngFor="let line of consoleLines" [class]="line.type">
+            <span class="line-marker">
+              <span class="marker-symbol" *ngIf="line.type === 'input'">└─</span>
+              <span class="marker-symbol" *ngIf="line.type === 'output'">✔</span>
+              <span class="marker-symbol" *ngIf="line.type === 'error'">✘</span>
+              <span class="marker-symbol" *ngIf="line.type === 'info'">◆</span>
+            </span>
+            <span class="line-text">{{ line.text }}</span>
+          </div>
+          <div class="console-input-line">
+            <span class="input-prompt">{{ isRunning ? '...' : '❯' }}</span>
+            <span class="console-cursor" *ngIf="!isRunning">_</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="console-line success">
-      Hola Mundo
-    </div>
-    <div class="console-line info">
-      Proceso finalizado correctamente.
-    </div>
-  </div>
-
-</div>
 
   </div>
 

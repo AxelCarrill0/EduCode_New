@@ -5,10 +5,6 @@
       <h1>¡Bienvenido de nuevo, {{ userStats.name }}!</h1>
       <p class="welcome-subtitle">Has completado el {{ userStats.levelProgress }}% de tu ruta de aprendizaje</p>
     </div>
-    <div class="welcome-actions">
-      <p-tag [value]="'Nivel ' + userStats.level" severity="success" styleClass="level-tag"></p-tag>
-      <p-avatar label="U" shape="circle" size="large" styleClass="user-avatar"></p-avatar>
-    </div>
   </div>
 
   <div class="stats-grid">
@@ -118,23 +114,7 @@
         </p-timeline>
       </p-panel>
 
-      <p-card styleClass="achievements-card">
-        <div class="achievements-header">
-          <i class="pi pi-trophy"></i>
-          <h3>Logros</h3>
-        </div>
-        <div class="achievements-list">
-          <div class="achievement-item" *ngFor="let ach of achievements">
-            <div class="achievement-icon" [ngClass]="ach.earned ? 'earned' : 'locked'">
-              <i [class]="ach.icon"></i>
-            </div>
-            <div class="achievement-info">
-              <span class="achievement-name">{{ ach.name }}</span>
-              <p-tag [value]="ach.earned ? 'Obtenido' : 'Bloqueado'" [severity]="ach.earned ? 'success' : 'secondary'"></p-tag>
-            </div>
-          </div>
-        </div>
-      </p-card>
+
     </div>
   </div>
 
