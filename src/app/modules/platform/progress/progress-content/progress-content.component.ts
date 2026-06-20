@@ -16,6 +16,8 @@ interface Achievement {
   description: string;
   icon: string;
   earned: boolean;
+  color: string;
+  bgColor: string;
 }
 
 @Component({
@@ -36,11 +38,17 @@ export class ProgressContentComponent {
   ];
 
   achievements: Achievement[] = [
-    { name: 'Primera lección', description: 'Completaste tu primera lección', icon: 'pi pi-star-fill', earned: true },
-    { name: 'Racha de 5 días', description: '5 días consecutivos aprendiendo', icon: 'pi pi-bolt', earned: true },
-    { name: '5 ejercicios', description: 'Resolviste 5 ejercicios prácticos', icon: 'pi pi-check-circle', earned: true },
-    { name: 'Explorador', description: 'Iniciaste todos los módulos', icon: 'pi pi-compass', earned: false },
-    { name: 'Completador', description: 'Completaste tu primer módulo', icon: 'pi pi-trophy', earned: false },
-    { name: '10 ejercicios', description: 'Resolviste 10 ejercicios prácticos', icon: 'pi pi-code', earned: false }
+    { name: 'Primera lección', description: 'Completaste tu primera lección', icon: 'pi pi-star-fill', earned: true, color: '#10b981', bgColor: 'rgba(16, 185, 129, 0.12)' },
+    { name: 'Racha de 5 días', description: '5 días consecutivos aprendiendo', icon: 'pi pi-bolt', earned: true, color: '#f59e0b', bgColor: 'rgba(245, 158, 11, 0.12)' },
+    { name: '5 ejercicios', description: 'Resolviste 5 ejercicios prácticos', icon: 'pi pi-check-circle', earned: true, color: '#3b82f6', bgColor: 'rgba(59, 130, 246, 0.12)' },
+    { name: 'Explorador', description: 'Iniciaste todos los módulos', icon: 'pi pi-compass', earned: false, color: '#8b5cf6', bgColor: 'rgba(139, 92, 246, 0.12)' },
+    { name: 'Completador', description: 'Completaste tu primer módulo', icon: 'pi pi-trophy', earned: false, color: '#ef4444', bgColor: 'rgba(239, 68, 68, 0.12)' },
+    { name: '10 ejercicios', description: 'Resolviste 10 ejercicios prácticos', icon: 'pi pi-code', earned: false, color: '#06b6d4', bgColor: 'rgba(6, 182, 212, 0.12)' }
   ];
+
+  formStars = 5;
+
+  setRating(n: number): void {
+    this.formStars = n;
+  }
 }

@@ -9,11 +9,11 @@
 
   <div class="section-header">
     <h2>Progreso por módulo</h2>
-    <p>Revisa tu avance en cada módulo de aprendizaje.</p>
   </div>
 
   <div class="modules-list">
-    <div class="module-row" *ngFor="let mod of moduleProgress; let i = index" [style.--accent]="mod.accent" [style.--delay]="i * 0.08 + 's'">
+    <div class="module-row" *ngFor="let mod of moduleProgress; let i = index" [style.--accent]="mod.accent"
+      [style.--delay]="i * 0.08 + 's'">
       <div class="row-accent"></div>
       <div class="row-icon" [style.background]="mod.iconBg" [style.color]="mod.accent">
         <i [class]="mod.icon"></i>
@@ -22,7 +22,9 @@
         <div class="row-top">
           <div class="row-title-group">
             <span class="row-name">{{ mod.name }}</span>
-            <span class="row-status" [class.completed]="mod.status === 100" [class.in-progress]="mod.status > 0 && mod.status < 100" [class.pending]="mod.status === 0">{{ mod.status === 100 ? 'Completado' : mod.status > 0 ? 'En progreso' : 'Pendiente' }}</span>
+            <span class="row-status" [class.completed]="mod.status === 100"
+              [class.in-progress]="mod.status > 0 && mod.status < 100" [class.pending]="mod.status === 0">{{ mod.status
+              === 100 ? 'Completado' : mod.status > 0 ? 'En progreso' : 'Pendiente' }}</span>
           </div>
           <span class="row-pct">{{ mod.status }}%</span>
         </div>
@@ -42,14 +44,15 @@
 
   <div class="section-header">
     <h2>Logros</h2>
-    <p>Descubre los logros que has obtenido en tu camino de aprendizaje.</p>
   </div>
 
   <div class="achievements-section">
-    <div class="achievement-card" *ngFor="let ach of achievements; let i = index" [style.--card-delay]="i * 0.08 + 's'" [class.locked]="!ach.earned">
+    <div class="achievement-card" *ngFor="let ach of achievements; let i = index" [style.--card-delay]="i * 0.08 + 's'"
+      [class.locked]="!ach.earned" [style.--ach-color]="ach.color" [style.--ach-bg]="ach.bgColor">
       <div class="ach-icon" [class.earned]="ach.earned" [class.locked]="!ach.earned">
         <i [class]="ach.icon"></i>
       </div>
+      <div class="ach-glow" *ngIf="ach.earned"></div>
       <div class="ach-info">
         <span class="ach-name">{{ ach.name }}</span>
         <span class="ach-desc">{{ ach.description }}</span>
@@ -58,6 +61,49 @@
         <i *ngIf="ach.earned" class="pi pi-check-circle earned-check"></i>
         <i *ngIf="!ach.earned" class="pi pi-lock locked-icon"></i>
       </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>Comparte tu experiencia</h2>
+    <p>Tu opinión ayuda a mejorar EduCode y motiva a otros estudiantes.</p>
+  </div>
+
+  <div class="testimonial-form-card">
+    <div class="form-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tName">Nombre</label>
+          <input id="tName" type="text" class="form-input" placeholder="Tu nombre" maxlength="60">
+        </div>
+        <div class="form-group">
+          <label for="tRole">Rol</label>
+          <input id="tRole" type="text" class="form-input" placeholder="Ej: Estudiante de Ing. de Sistemas" maxlength="80">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tText">Tu experiencia</label>
+        <textarea id="tText" class="form-textarea" placeholder="Cuéntanos cómo ha sido tu experiencia aprendiendo con EduCode..." maxlength="500" rows="4"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Calificación</label>
+        <div class="star-rating">
+          <i *ngFor="let s of [1,2,3,4,5]; let i = index"
+             class="pi"
+             [class.pi-star-fill]="s <= formStars"
+             [class.pi-star]="s > formStars"
+             [class.star-active]="s <= formStars"
+             (click)="setRating(s)">
+          </i>
+        </div>
+      </div>
+
+      <button class="form-submit">
+        <i class="pi pi-send"></i>
+        Enviar testimonio
+      </button>
     </div>
   </div>
 

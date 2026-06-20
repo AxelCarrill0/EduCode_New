@@ -604,13 +604,20 @@ $color-border: rgba(226, 232, 240, 0.8);
     padding-top: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 
-    .user-avatar {
+    .user-avatar-initials {
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #10b981, #06b6d4);
       border: 2px solid rgba(16, 185, 129, 0.15);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
     }
 
     .user-details {

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { ProgressBarModule } from 'primeng/progressbar';
 
 interface ModuleItem {
   name: string;
@@ -15,12 +14,15 @@ interface ModuleItem {
   progress: number;
   difficulty: string;
   status: 'not-started' | 'in-progress' | 'completed';
+  category: string;
+  xp: number;
+  isNew?: boolean;
 }
 
 @Component({
   selector: 'app-modules-content',
   standalone: true,
-  imports: [CommonModule, ButtonModule, TagModule, ProgressBarModule],
+  imports: [CommonModule, ButtonModule, TagModule],
   templateUrl: './modules-content.component.html',
   styleUrl: './modules-content.component.scss'
 })
@@ -44,7 +46,9 @@ export class ModulesContentComponent {
       completed: 4,
       progress: 80,
       difficulty: 'Principiante',
-      status: 'in-progress'
+      status: 'in-progress',
+      category: 'python',
+      xp: 250
     },
     {
       name: 'Variables',
@@ -56,7 +60,9 @@ export class ModulesContentComponent {
       completed: 2,
       progress: 50,
       difficulty: 'Principiante',
-      status: 'in-progress'
+      status: 'in-progress',
+      category: 'python',
+      xp: 180
     },
     {
       name: 'Tipos de datos',
@@ -68,7 +74,9 @@ export class ModulesContentComponent {
       completed: 0,
       progress: 0,
       difficulty: 'Principiante',
-      status: 'not-started'
+      status: 'not-started',
+      category: 'python',
+      xp: 200
     },
     {
       name: 'Operadores',
@@ -80,7 +88,9 @@ export class ModulesContentComponent {
       completed: 0,
       progress: 0,
       difficulty: 'Principiante',
-      status: 'not-started'
+      status: 'not-started',
+      category: 'python',
+      xp: 150
     },
     {
       name: 'Condicionales',
@@ -92,7 +102,9 @@ export class ModulesContentComponent {
       completed: 0,
       progress: 0,
       difficulty: 'Intermedio',
-      status: 'not-started'
+      status: 'not-started',
+      category: 'python',
+      xp: 300
     },
     {
       name: 'Bucles',
@@ -104,13 +116,40 @@ export class ModulesContentComponent {
       completed: 0,
       progress: 0,
       difficulty: 'Intermedio',
-      status: 'not-started'
+      status: 'not-started',
+      category: 'python',
+      xp: 280,
+      isNew: true
     }
   ];
+
+  get totalCompleted(): number {
+    return this.modules.reduce((sum, m) => sum + m.completed, 0);
+  }
+
+  get totalLessons(): number {
+    return this.modules.reduce((sum, m) => sum + m.lessons, 0);
+  }
+
+  get overallProgress(): number {
+    return this.totalLessons > 0 ? Math.round((this.totalCompleted / this.totalLessons) * 100) : 0;
+  }
+
+  get totalXp(): number {
+    return this.modules.reduce((sum, m) => sum + (m.status === 'completed' ? m.xp : m.status === 'in-progress' ? Math.round(m.xp * m.progress / 100) : 0), 0);
+  }
 
   get filteredModules(): ModuleItem[] {
     if (this.activeFilter === 'all') return this.modules;
     return this.modules.filter(m => m.status === this.activeFilter);
+  }
+
+  get hasActiveFilter(): boolean {
+    return this.activeFilter !== 'all';
+  }
+
+  get filteredCount(): number {
+    return this.filteredModules.length;
   }
 
   setFilter(key: string): void {

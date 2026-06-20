@@ -1,18 +1,69 @@
 <div class="modules-container">
 
-  <div class="modules-header">
-    <div>
-      <h1>Módulos de aprendizaje</h1>
-      <p>Explora los módulos disponibles y sigue tu progreso.</p>
-    </div>
-    <div class="header-chips">
-      <p-tag *ngFor="let chip of filterChips" [value]="chip.label" [severity]="chip.active ? 'success' : 'info'" [styleClass]="'filter-chip' + (chip.active ? ' chip-active' : '')" (click)="setFilter(chip.key)"></p-tag>
+  <div class="modules-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-badge">&#9670; Ruta de aprendizaje</span>
+        <h1>Módulos de aprendizaje</h1>
+        <p>Domina la programación paso a paso con rutas dise&ntilde;adas para ti.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">{{ overallProgress }}%</span>
+          <span class="stat-label">Completado</span>
+          <div class="stat-bar">
+            <div class="stat-bar-fill" [style.width]="overallProgress + '%'"></div>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">{{ totalCompleted }}/{{ totalLessons }}</span>
+          <span class="stat-label">Lecciones</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-value">{{ totalXp }} XP</span>
+          <span class="stat-label">Experiencia</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="modules-grid">
-    <div class="module-card" *ngFor="let mod of filteredModules; let i = index" [style.--card-delay]="i * 0.06 + 's'" [style.--card-accent]="mod.accent">
-      <div class="card-accent"></div>
+  <div class="modules-toolbar">
+    <div class="toolbar-left">
+      <div class="filter-chips">
+        <button
+          *ngFor="let chip of filterChips"
+          class="filter-chip"
+          [class.active]="chip.active"
+          (click)="setFilter(chip.key)"
+          type="button">
+          {{ chip.label }}
+        </button>
+      </div>
+    </div>
+    <div class="toolbar-right">
+      <span class="modules-count">{{ filteredCount }} módulo{{ filteredCount !== 1 ? 's' : '' }}</span>
+    </div>
+  </div>
+
+  <div class="modules-grid" *ngIf="filteredModules.length > 0">
+    <div
+      class="module-card"
+      *ngFor="let mod of filteredModules; let i = index"
+      [style.--card-delay]="i * 0.07 + 's'"
+      [style.--card-accent]="mod.accent"
+      [class.card-locked]="mod.status === 'not-started'"
+      [class.card-completed]="mod.status === 'completed'"
+      [class.card-progressing]="mod.status === 'in-progress'">
+
+      <div class="card-glow"></div>
+      <div class="card-accent-line"></div>
+
+      <div class="card-corner-badge" *ngIf="mod.isNew">
+        <span>NUEVO</span>
+      </div>
+
       <div class="card-body">
         <div class="card-top">
           <div class="card-icon" [style.background]="mod.iconBg" [style.color]="mod.accent">
@@ -23,26 +74,43 @@
             <p>{{ mod.description }}</p>
           </div>
         </div>
-        <div class="card-progress" *ngIf="mod.status !== 'not-started'">
-          <div class="progress-row">
-            <span class="progress-label">{{ mod.completed }}/{{ mod.lessons }} lecciones</span>
-            <span class="progress-pct">{{ mod.progress }}%</span>
-          </div>
-          <p-progressBar [value]="mod.progress" styleClass="module-progress-bar"></p-progressBar>
-        </div>
+
         <div class="card-footer">
           <div class="card-meta">
-            <p-tag [value]="mod.difficulty" [severity]="mod.difficulty === 'Principiante' ? 'success' : mod.difficulty === 'Intermedio' ? 'warning' : 'danger'" styleClass="diff-tag"></p-tag>
-            <span class="lesson-count">{{ mod.lessons }} lecciones</span>
+            <span class="diff-tag" [class.diff-beginner]="mod.difficulty === 'Principiante'" [class.diff-intermediate]="mod.difficulty === 'Intermedio'" [class.diff-advanced]="mod.difficulty === 'Avanzado'">
+              {{ mod.difficulty }}
+            </span>
+            <span class="lesson-count">
+              <i class="pi pi-book"></i>
+              {{ mod.lessons }} lecciones
+            </span>
           </div>
           <div class="card-actions">
-            <p-tag *ngIf="mod.status === 'in-progress'" value="En progreso" severity="warning" styleClass="status-tag"></p-tag>
-            <p-tag *ngIf="mod.status === 'completed'" value="Completado" severity="success" styleClass="status-tag"></p-tag>
-            <p-button [label]="mod.status === 'completed' ? 'Repasar' : 'Entrar'" icon="pi pi-arrow-right" iconPos="right" severity="success" styleClass="enter-btn"></p-button>
+            <span class="status-indicator" *ngIf="mod.status === 'in-progress'">
+              <span class="status-dot"></span>
+              En progreso
+            </span>
+            <span class="status-indicator status-done" *ngIf="mod.status === 'completed'">
+              <i class="pi pi-check-circle"></i>
+              Completado
+            </span>
+            <button class="enter-btn" [style.--btn-accent]="mod.accent" [class.btn-locked]="mod.status === 'not-started'">
+              <span>{{ mod.status === 'completed' ? 'Repasar' : mod.status === 'in-progress' ? 'Continuar' : 'Comenzar' }}</span>
+              <i class="pi pi-arrow-right"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="empty-state" *ngIf="filteredModules.length === 0">
+    <div class="empty-icon">
+      <i class="pi pi-search"></i>
+    </div>
+    <h3>No hay módulos</h3>
+    <p>No se encontraron módulos con el filtro seleccionado.</p>
+    <button class="empty-btn" (click)="setFilter('all')">Ver todos</button>
   </div>
 
 </div>

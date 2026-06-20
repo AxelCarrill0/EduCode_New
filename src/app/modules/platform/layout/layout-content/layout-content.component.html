@@ -1,5 +1,5 @@
 <div class="layout-wrapper">
-  <aside class="sidebar">
+  <aside class="sidebar" [class.drawer-open]="mobileMenuOpen()" [attr.aria-hidden]="!mobileMenuOpen()">
     <div class="sidebar-glow"></div>
 
     <div class="sidebar-header" routerLink="/">
@@ -8,23 +8,23 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a routerLink="/platform/dashboard" routerLinkActive="nav-active" class="nav-item">
+      <a routerLink="/platform/dashboard" routerLinkActive="nav-active" class="nav-item" (click)="closeMobileMenu()">
         <span class="nav-icon"><i class="pi pi-home"></i></span>
         <span>Dashboard</span>
       </a>
-      <a routerLink="/platform/modules" routerLinkActive="nav-active" class="nav-item">
+      <a routerLink="/platform/modules" routerLinkActive="nav-active" class="nav-item" (click)="closeMobileMenu()">
         <span class="nav-icon"><i class="pi pi-book"></i></span>
         <span>Módulos</span>
       </a>
-      <a routerLink="/platform/laboratory" routerLinkActive="nav-active" class="nav-item">
+      <a routerLink="/platform/laboratory" routerLinkActive="nav-active" class="nav-item" (click)="closeMobileMenu()">
         <span class="nav-icon"><i class="pi pi-code"></i></span>
         <span>Laboratorio</span>
       </a>
-      <a routerLink="/platform/progress" routerLinkActive="nav-active" class="nav-item">
+      <a routerLink="/platform/progress" routerLinkActive="nav-active" class="nav-item" (click)="closeMobileMenu()">
         <span class="nav-icon"><i class="pi pi-chart-bar"></i></span>
         <span>Progreso</span>
       </a>
-      <a routerLink="/platform/settings" routerLinkActive="nav-active" class="nav-item">
+      <a routerLink="/platform/settings" routerLinkActive="nav-active" class="nav-item" (click)="closeMobileMenu()">
         <span class="nav-icon"><i class="pi pi-cog"></i></span>
         <span>Ajustes</span>
       </a>
@@ -41,9 +41,14 @@
     </div>
   </aside>
 
+  <div class="mobile-overlay" [class.overlay-visible]="mobileMenuOpen()" (click)="closeMobileMenu()" [attr.aria-hidden]="!mobileMenuOpen()"></div>
+
   <div class="main-area">
     <header class="topbar">
       <div class="topbar-left">
+        <button class="mobile-menu-btn" (click)="toggleMobileMenu()" aria-label="Abrir menú" aria-expanded="false" type="button">
+          <i class="pi" [class.pi-bars]="!mobileMenuOpen()" [class.pi-times]="mobileMenuOpen()"></i>
+        </button>
         <i class="pi pi-circle-fill status-dot"></i>
         <span class="topbar-title">Plataforma Educativa</span>
       </div>

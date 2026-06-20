@@ -8,6 +8,9 @@ import { CarouselModule } from 'primeng/carousel';
 import { AccordionModule } from 'primeng/accordion';
 import { CardModule } from 'primeng/card';
 
+import { Testimonial } from '../../../../shared/models/testimonial.interface';
+import { TestimonialService } from '../../../../shared/services/testimonial.service';
+
 @Component({
   selector: 'app-home-content',
   standalone: true,
@@ -26,7 +29,6 @@ import { CardModule } from 'primeng/card';
 })
 export class HomeContentComponent implements OnInit {
 
-  // Características principales (Backend-Ready)
   features = [
     {
       title: 'Consola Interactiva',
@@ -48,7 +50,6 @@ export class HomeContentComponent implements OnInit {
     }
   ];
 
-  // Pasos de "Cómo funciona" (Backend-Ready)
   steps = [
     {
       num: '01',
@@ -70,32 +71,8 @@ export class HomeContentComponent implements OnInit {
     }
   ];
 
-  // Testimonios de Estudiantes (Backend-Ready)
-  testimonials = [
-    {
-      name: 'Sofía Martínez',
-      role: 'Estudiante de Ing. de Sistemas',
-      text: 'EduCode me ayudó a entender la lógica de programación mucho más rápido que los métodos tradicionales. ¡La validación en tiempo real es excelente!',
-      stars: 5,
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'
-    },
-    {
-      name: 'Alejandro Ruiz',
-      role: 'Desarrollador Junior Frontend',
-      text: 'Los laboratorios interactivos son muy prácticos. Sentar las bases con sus retos fue clave para conseguir mi primer empleo como programador.',
-      stars: 5,
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150'
-    },
-    {
-      name: 'Andrea Gómez',
-      role: 'Estudiante de Telecomunicaciones',
-      text: 'Aprender SQL en EduCode fue sumamente intuitivo. El paso a paso te guía sin abrumarte y los retos incrementales son adictivos.',
-      stars: 5,
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150'
-    }
-  ];
+  testimonials: Testimonial[] = [];
 
-  // Opciones de respuesta para el Carrusel de Testimonios
   carouselResponsiveOptions = [
     {
       breakpoint: '1024px',
@@ -109,29 +86,31 @@ export class HomeContentComponent implements OnInit {
     }
   ];
 
-  // Preguntas frecuentes (Backend-Ready)
   faqs = [
     {
       question: '¿Necesito conocimientos previos de programación?',
       answer: '¡No! EduCode está diseñado tanto para principiantes absolutos que nunca han escrito una línea de código como para programadores intermedios que buscan practicar y mejorar sus habilidades.',
-      open: false
     },
     {
       question: '¿Qué lenguajes puedo aprender en la plataforma?',
       answer: 'Actualmente ofrecemos soporte interactivo completo para JavaScript, Python y consultas SQL estructuradas, con planes de añadir TypeScript y Java muy pronto.',
-      open: false
     },
     {
       question: '¿Cómo funciona la validación automática?',
       answer: 'Cuando ejecutas tu código, nuestro sistema realiza pruebas unitarias automatizadas sobre tu solución para verificar si cumple con las condiciones del ejercicio, devolviéndote feedback instantáneo.',
-      open: false
     }
   ];
 
-  ngOnInit(): void {}
+  constructor(private testimonialService: TestimonialService) {}
 
-  // este metodo nos ayuda a hacer scroll a la parte superior de la página
-  // cuando hacemos click en inicio en el footer
+  ngOnInit(): void {
+    this.testimonials = this.testimonialService.getAll();
+  }
+
+  getInitials(name: string): string {
+    return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  }
+
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

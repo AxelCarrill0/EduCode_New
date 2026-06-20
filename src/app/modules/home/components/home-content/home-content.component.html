@@ -102,7 +102,7 @@
                 </div>
                 <p class="testimonial-text">"{{ t.text }}"</p>
                 <div class="testimonial-user">
-                  <img [src]="t.avatar" [alt]="t.name" class="user-avatar">
+                  <div class="user-avatar-initials">{{ getInitials(t.name) }}</div>
                   <div class="user-details">
                     <h4>{{ t.name }}</h4>
                     <span>{{ t.role }}</span>
