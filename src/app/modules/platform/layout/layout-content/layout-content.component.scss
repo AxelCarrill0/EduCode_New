@@ -42,8 +42,9 @@ $color-slate-50: #f8fafc;
     left: 0;
     width: 280px;
     max-width: 85vw;
-    height: 100vh;
-    height: 100dvh;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     z-index: 1100;
     overflow: hidden;
     padding: 1rem 1rem 1.5rem;
@@ -58,6 +59,10 @@ $color-slate-50: #f8fafc;
     }
 
     &::after { display: none; }
+
+    .sidebar-nav {
+      flex: 0 0 auto;
+    }
   }
 }
 
